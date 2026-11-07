@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hard-wrapped line breaks — Micro-Formatter fix guides</title>
+<meta name="description" content="Why pasted text keeps a line break mid-sentence, and how to reflow it without losing paragraphs or list items.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Hard-wrapped line breaks</h1>
+<p class="meta">Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>The paragraph runs on, then a break lands mid-sentence. The text was
+  wrapped for a fixed width when it was created, and the breaks were stored as
+  real line breaks rather than as visual wrapping.</p>
+</div>
+
+<h2>What you are seeing</h2>
+<p>Text copied from a PDF, an email body or a terminal arrives like this:</p>
+<p><code>The fix is to paste the text into a plain-text box first, then<br>
+strip the single breaks and keep the blank-line gaps.</code></p>
+<p>Every line ends where the original page ended, so the destination app treats
+each one as a paragraph — or, in Markdown, as the end of a hard break.</p>
+
+<h2>Why it happens</h2>
+<p>PDFs in particular store a newline per rendered line, because the format
+describes positions on a page rather than sentences. Copying gives you those
+newlines. Nothing is corrupted; the structure is simply wrong for a text
+editor.</p>
+
+<h2>Fix it by hand</h2>
+<ul>
+  <li>Paste into a plain-text box — a bare <code>&lt;textarea&gt;</code>, your
+  editor's "paste as plain text" command, or a terminal.</li>
+  <li>Join the lines that belong to one paragraph, leaving one space where the
+  break was.</li>
+  <li>Keep a blank line between paragraphs, otherwise they merge into one.</li>
+  <li>Delete a trailing hyphen only when it split a word
+  (<code>consider-</code> + <code>ation</code>), not when the hyphen is part of
+  the word.</li>
+</ul>
+
+<h2>Fix it with the extension</h2>
+<ul>
+  <li>Open Micro-Formatter, paste the text, and press
+  <strong>Reflow / Clean pasted text</strong>.</li>
+  <li>Press <strong>Copy to Clipboard</strong>, or
+  <strong>Replace in Page</strong> if the field you selected accepts writes.</li>
+</ul>
+<p>It joins wrapped lines with a single space so word boundaries hold, rejoins a
+word split by a trailing hyphen, keeps each list item on its own line, and
+preserves the blank-line paragraph gaps. Repeated spaces and tabs collapse to
+one space.</p>
+
+<h2>What it will not do</h2>
+<p>It cannot tell a wrapped line from a deliberate one. Poetry, addresses and
+code blocks are lines you meant to keep — check those before copying the
+result. If the text also carries hidden characters, run
+<strong>Strip formatting</strong> as well; reflow leaves them alone.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../invisible-characters/">Invisible characters</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>

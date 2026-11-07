@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micro-Formatter — fix guides — VibeCode Labs</title>
+<meta name="description" content="Short, specific fixes for text that arrives from another app with its formatting attached: hard-wrapped lines, hidden characters, curly quotes and broken lists.">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Fixing text that arrives broken</h1>
+<p class="meta">Applies to Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>Every guide below describes one shape of copy-paste damage: what it looks
+  like, why it happens, how to fix it by hand in a few seconds, and what the
+  extension does for you. If a step does not apply to your case, the guide says
+  so rather than claiming a fix it does not have.</p>
+</div>
+
+<h2>The six guides</h2>
+<ul>
+  <li><a href="reflow/">Hard-wrapped line breaks</a> — a break lands
+  mid-sentence after pasting from a PDF or email.</li>
+  <li><a href="invisible-characters/">Invisible characters</a> — the words look
+  right, but search, spacing and exports misbehave.</li>
+  <li><a href="smart-quotes/">Curly quotes and dashes</a> — punctuation that
+  breaks code, JSON and shell commands.</li>
+  <li><a href="markdown-lists/">Lists that will not become Markdown</a> —
+  bullets that collapse or gain stray spacing.</li>
+  <li><a href="strip-formatting/">Formatting that rides along</a> — fonts,
+  colours and link styling following the text.</li>
+  <li><a href="formatting-basics/">The plain-text step</a> — the general
+  routine, and the order to apply the fixes in.</li>
+</ul>
+
+<h2>What the extension is</h2>
+<p>Micro-Formatter is a Chrome extension that cleans text you paste into it, or
+text you select on a page. It runs entirely inside your browser: no account, no
+server, and nothing you paste is sent anywhere. It is not a converter for
+documents, and it does not rewrite text for you — every button is a specific
+text transformation you choose.</p>
+
+<h2>What it cannot do</h2>
+<p>It sees only text. If the problem is HTML markup (<code>&lt;span
+style="font-family:…"&gt;</code> wrapping every word), the styling is already
+outside the text by the time the extension gets it — paste through your
+editor's plain-text shortcut instead. Photos, tables and images never survive a
+text round trip either.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../micro-formatter/">Privacy policy</a> ·
+  <a href="../micro-formatter/support.html">Support</a> ·
+  <a href="../">All policies</a></p>
+</footer>
+
+</main>
+</body>
+</html>

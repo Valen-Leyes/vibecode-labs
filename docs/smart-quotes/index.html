@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curly quotes and dashes — Micro-Formatter fix guides</title>
+<meta name="description" content="Smart quotes from a word processor break code, JSON and shell commands. How to convert them to straight ASCII, and the damage no replacement can undo.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Curly quotes and dashes</h1>
+<p class="meta">Applies to Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>Apostrophes arrive curly, or a config file that looked fine now throws a
+  syntax error on a line you did not edit. The punctuation is typographic —
+  fine in prose, wrong everywhere a machine has to read it.</p>
+</div>
+
+<h2>What you are seeing</h2>
+<ul>
+  <li><code>“key”: “value”</code> instead of <code>"key": "value"</code> in
+  JSON, or <code>‘</code> where your shell expects <code>'</code>.</li>
+  <li>A CSS or JavaScript file fails to parse after a paste, and the reported
+  line looks correct.</li>
+  <li>An en dash or em dash appears where you typed a hyphen.</li>
+</ul>
+
+<h2>Why it happens</h2>
+<p>Word processors, some note apps, and every "smart punctuation" setting
+replace ASCII quotation marks and hyphens as you type. The replacement is
+character-for-character: <code>U+0022</code> becomes <code>U+201C</code> or
+<code>U+201D</code>, and the compiler never sees a quote at all.</p>
+
+<h2>Fix it with the extension</h2>
+<ul>
+  <li>Open Micro-Formatter, paste the text, and press
+  <strong>Strip formatting</strong>. Leave <strong>Preserve typographic
+  punctuation</strong> unticked.</li>
+  <li>Copy the result back. Curly double quotes become <code>"</code>, curly
+  single quotes become <code>'</code>, an en dash becomes <code>-</code> and an
+  em dash becomes <code>--</code>.</li>
+</ul>
+<p>Tick <strong>Preserve typographic punctuation</strong> when the destination
+is prose and you want the curly quotes kept; the whitespace and hidden-character
+cleanup still runs.</p>
+
+<h2>What it will not do</h2>
+<p>It does not repair mojibake. If you see <code>â€™</code> or <code>Ã©</code>,
+the file was decoded with the wrong encoding before it reached you, and the
+original characters are already lost — re-export from the source as UTF-8
+instead of replacing punctuation.</p>
+<p>It leaves the ellipsis character (<code>…</code>) alone, and it will not
+convert quotes inside a file you paste as one blob without also touching the
+prose around them. For a mixed document, clean the code block separately.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../invisible-characters/">Invisible characters</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>

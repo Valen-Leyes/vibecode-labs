@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The plain-text step — Micro-Formatter fix guides</title>
+<meta name="description" content="One routine that prevents most copy-paste formatting damage, and the order to apply the fixes in when the damage is already done.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>The plain-text step</h1>
+<p class="meta">Applies to Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>Almost every copy-paste problem on this site comes from one shortcut:
+  text moving straight from a rich source into a rich destination. Put a
+  plain-text step in the middle and most of it stops happening.</p>
+</div>
+
+<h2>The routine</h2>
+<ul>
+  <li>Copy from the source as usual.</li>
+  <li>Paste into something that has no formatting to inherit — a bare text
+  box, a notes field with plain text, or Micro-Formatter.</li>
+  <li>Clean it there: reflow, then strip, in that order.</li>
+  <li>Copy the cleaned text and paste it where it belongs.</li>
+</ul>
+<p>The order matters. Reflow decides where sentence breaks are, so it needs the
+text before whitespace is collapsed. Strip then removes hidden characters and
+normalises punctuation, which does not move any words.</p>
+
+<h2>Knowing which fix you need</h2>
+<ul>
+  <li>A break in the middle of a sentence →
+  <a href="../reflow/">reflow</a>.</li>
+  <li>The text looks right but behaves wrongly →
+  <a href="../invisible-characters/">hidden characters</a>.</li>
+  <li>Code or JSON fails on a line that looks fine →
+  <a href="../smart-quotes/">curly quotes</a>.</li>
+  <li>Bullets are literal characters or collapse →
+  <a href="../markdown-lists/">lists</a>.</li>
+  <li>Fonts and colours follow the text →
+  <a href="../strip-formatting/">rich text</a>.</li>
+</ul>
+
+<h2>When the text is fine as it is</h2>
+<p>Deliberate line breaks are not damage. Addresses, poems, code blocks,
+tables written by hand and anything where the author chose the wrapping should
+survive untouched — reflow will happily join those lines, so check before you
+copy the result.</p>
+
+<h2>Fastest path</h2>
+<p>Select the text on the page, right-click and choose <strong>Format selected
+text</strong>, or press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>. The
+extension opens with your selection already in the input box; nothing is sent
+anywhere, because there is nowhere to send it.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>

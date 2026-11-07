@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lists that will not become Markdown — Micro-Formatter fix guides</title>
+<meta name="description" content="Bullets pasted from a word processor collapse into one line or keep invisible list markers. How to convert them to Markdown, and what the conversion does not keep.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Lists that will not become Markdown</h1>
+<p class="meta">Applies to Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>The list collapses into a single paragraph, or the bullets render as
+  literal characters. A copy from a word processor or a chat window carries
+  list structure a Markdown renderer does not recognise.</p>
+</div>
+
+<h2>What you are seeing</h2>
+<ul>
+  <li>Every item ends up on one line, with the bullet characters left in the
+  middle of the text.</li>
+  <li>The list renders, but each item keeps an extra gap or a stray tab.</li>
+  <li>Markdown shows <code>• item</code> instead of turning it into a list.</li>
+</ul>
+
+<h2>Why it happens</h2>
+<p>There are two different things called "bulleted list". A word processor
+stores list structure as paragraph properties — you cannot see it, and it does
+not survive a paste into plain text. What does survive is a literal
+<code>•</code>, or a hard-wrapped line that begins with a hyphen and no space
+after it, which Markdown reads as an ordinary hyphen.</p>
+<p>A Markdown list needs the marker at the start of a line, one space after it,
+and a blank line above and below the block.</p>
+
+<h2>Fix it by hand</h2>
+<ul>
+  <li>Put each item on its own line.</li>
+  <li>Start each line with <code>- </code> — a hyphen and exactly one
+  space.</li>
+  <li>Leave a blank line before the first item and after the last.</li>
+  <li>Replace tabs with spaces; a tab before an item is what turns it into a
+  code block in some renderers.</li>
+</ul>
+
+<h2>Fix it with the extension</h2>
+<ul>
+  <li><strong>Bullets → Markdown</strong> turns a leading <code>-</code>,
+  <code>*</code> or <code>+</code> into <code>- </code>.</li>
+  <li><strong>Bullets → Numbers</strong> renumbers items from 1, in order, and
+  it does accept the literal <code>•</code> character.</li>
+  <li><strong>Numbers → Bullets</strong> and <strong>Markdown →
+  Bullets</strong> go the other way.</li>
+  <li><strong>Normalize spaces</strong> flattens the whole text to a single
+  line — useful for one paragraph, wrong for a list.</li>
+</ul>
+
+<h2>What it will not do</h2>
+<p>The conversion rewrites line prefixes only. Nested indentation is dropped by
+<strong>Bullets → Markdown</strong>, because the marker is moved to the start
+of the line; if you need nesting, re-indent the child items afterwards with two
+spaces. It also cannot tell a list inside a code block from a real list, so
+convert one block at a time.</p>
+<p>There is no one-click path from a literal <code>•</code> to a Markdown
+<code>- </code> list. <strong>Bullets → Numbers</strong> recognises the
+character and gives you a numbered list instead; if you specifically need
+hyphens, replace the bullets in a text editor first.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../reflow/">Hard-wrapped lines</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>

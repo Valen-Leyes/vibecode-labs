@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invisible characters — Micro-Formatter fix guides</title>
+<meta name="description" content="Zero-width spaces and a byte-order mark survive copy and paste, then break search, spacing and exports. Here is what removes them.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Invisible characters</h1>
+<p class="meta">Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>The words look normal, but search finds nothing, spacing jumps, or an
+  editor shows a stray marker where you see nothing at all. One or two
+  zero-width characters are sitting inside the text.</p>
+</div>
+
+<h2>What you are seeing</h2>
+<ul>
+  <li>A search for a word you can see returns nothing.</li>
+  <li>A red dot or a control-character box appears in a rich-text editor.</li>
+  <li>A PDF export drops the beginning of a line, or a URL stops working after
+  a copy and paste.</li>
+  <li>A diff shows two identical lines as different.</li>
+</ul>
+
+<h2>Why it happens</h2>
+<p>Word processors and some web editors insert a zero-width space anywhere they
+may need to break a long word, and a byte-order mark at the start of a file.
+They are real characters, they are invisible, and they survive most clipboard
+round trips. The ones that cause this specific confusion are:</p>
+<ul>
+  <li><code>U+200B</code> zero-width space</li>
+  <li><code>U+200C</code> and <code>U+200D</code> zero-width non-joiner and
+  joiner</li>
+  <li><code>U+FEFF</code> byte-order mark</li>
+</ul>
+
+<h2>Fix it with the extension</h2>
+<ul>
+  <li>Open Micro-Formatter, paste the text, and press
+  <strong>Strip formatting</strong>.</li>
+  <li>Press <strong>Copy to Clipboard</strong> before pasting anywhere that
+  cares.</li>
+</ul>
+<p>Strip removes exactly those four code points, then tidies the whitespace
+around them.</p>
+
+<h2>What it will not do</h2>
+<p>It does not remove a non-breaking space (<code>U+00A0</code>) or a soft
+hyphen (<code>U+00AD</code>). Those are visible in some editors, and removing
+them silently would change justified text you may want to keep. If one of them
+is your problem, search for it in a code editor that can show code points and
+delete it there.</p>
+<p>It also cannot fix a file that was already damaged by the wrong encoding —
+that is the <a href="../smart-quotes/">curly quotes</a> case, not this one.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../reflow/">Hard-wrapped lines</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>

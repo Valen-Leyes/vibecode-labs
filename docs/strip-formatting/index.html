@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formatting that rides along — Micro-Formatter fix guides</title>
+<meta name="description" content="Fonts, colours and link styling that follow pasted text into places that should be plain — what a plain-text paste does, and where a text cleaner cannot help.">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Formatting that rides along</h1>
+<p class="meta">Applies to Micro-Formatter 1.0.1 · Last updated 7 November 2026</p>
+
+<div class="summary">
+  <p>Fonts, colours, sizes and link styling follow the text into a field that
+  should be plain. This is the one case where the extension is often the wrong
+  tool, and this page says so before offering it.</p>
+</div>
+
+<h2>What you are seeing</h2>
+<ul>
+  <li>Pasted text keeps a heading's size, or a table's borders.</li>
+  <li>Every word is wrapped in a <code>&lt;span style="…"&gt;</code> once the
+  text reaches an HTML source view.</li>
+  <li>An email signature arrives in purple with the sender's font.</li>
+</ul>
+
+<h2>Why it happens</h2>
+<p>When you copy from a browser, the clipboard carries two versions: the
+visible text and an HTML fragment describing how it looked. The receiving app
+picks whichever it prefers. A rich editor takes the HTML, so the styling comes
+along whether you wanted it or not.</p>
+
+<h2>Fix it by hand — usually the right fix</h2>
+<ul>
+  <li>Use your editor's plain-text paste: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+
+  <kbd>V</kbd> on Windows and Linux, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+
+  <kbd>V</kbd> on macOS.</li>
+  <li>Or paste into any bare text box first, then copy from there.</li>
+</ul>
+<p>This drops the HTML variant entirely, which is exactly what you want. A tool
+that receives only text cannot remove markup it never saw.</p>
+
+<h2>What the extension does instead</h2>
+<p>Micro-Formatter works on text, not on HTML. <strong>Strip
+formatting</strong> is still useful once the text is plain — it removes
+zero-width characters, collapses repeated spaces and tabs, reduces three or
+more newlines to two, and normalises curly punctuation — but it will not strip
+<code>&lt;span&gt;</code> tags or colours out of a copied fragment.</p>
+<p>If the text you have already contains markup, you need an HTML-to-text step,
+which is outside this extension's scope.</p>
+
+<h2>What it will not do</h2>
+<p>It does not touch images, tables, footnotes or comments, because none of
+those exist in the text layer. It also cannot restore a link's destination
+after a plain-text paste; if you need the URL, copy it separately.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All fix guides</a> ·
+  <a href="../formatting-basics/">The plain-text step</a> ·
+  <a href="../../micro-formatter/">Privacy policy</a> ·
+  <a href="../../micro-formatter/support.html">Support</a></p>
+</footer>
+
+</main>
+</body>
+</html>
