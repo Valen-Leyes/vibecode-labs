@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hidden Character Remover — Support — VibeCode Labs</title>
+<meta name="description" content="How to get help with the Hidden Character Remover Chrome extension and where to report a problem.">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<main>
+
+<h1>Hidden Character Remover — Support</h1>
+<p class="meta">Applies to Hidden Character Remover 0.1.0 and later · Last updated 10 November 2026</p>
+
+<h2>Report a problem</h2>
+<p>Open an issue at
+<a href="https://github.com/Valen-Leyes/vibecode-labs/issues">github.com/Valen-Leyes/vibecode-labs/issues</a>.
+The store listing also shows a contact address if you would rather write
+privately.</p>
+
+<h2>What to include</h2>
+<ul>
+  <li>your Chrome version (chrome://version);</li>
+  <li>how you ran the extension — context menu, <kbd>Alt+Shift+H</kbd>, or the
+  paste box;</li>
+  <li>the text you expected to be cleaned, or the characters you expected it to
+  find, and what happened instead. If you can, say which character misbehaved:
+  a zero-width space pasted out of a browser console looks like
+  <code>\u200B</code>.</li>
+</ul>
+<p>The extension collects no diagnostics, so there is no log to attach: a short
+description of the input is the most useful thing you can send.</p>
+
+<h2>Common questions</h2>
+
+<p><strong>Nothing happens when I right-click selected text.</strong> The menu
+item only appears while text is selected. If it is missing, reload the page after
+installing the extension.</p>
+
+<p><strong>It says a page cannot be read.</strong> Chrome does not allow any
+extension to script its own pages (<code>chrome://…</code>), the Chrome Web Store,
+or the built-in PDF viewer. Copy the text, open the popup and paste it there —
+the paste box does the same cleaning.</p>
+
+<p><strong>The shortcut does nothing.</strong> <kbd>Alt+Shift+H</kbd> is a
+suggestion, and another extension may already own it. Reassign it at
+<code>chrome://extensions/shortcuts</code>.</p>
+
+<p><strong>It found characters but the text looks the same.</strong> Invisible
+characters are invisible. The receipt counts them per kind, which is the only
+visible evidence they were there; the copy button gives you the cleaned text.</p>
+
+<p><strong>It says "no hidden characters found" but the text is still
+wrong.</strong> The extension only removes the character classes listed on the
+store page: zero-width characters, soft hyphens, byte-order marks, non-breaking
+and narrow spaces, bidirectional controls, and — when you ask — smart quotes,
+dashes and HTML tags. It does not reflow paragraphs, fix spelling, or reword
+anything.</p>
+
+<p><strong>My smart quotes were not removed.</strong> Check that "Keep smart
+quotes and dashes" is off in Options; the receipt marks those counts as
+<em>kept</em> when it is on.</p>
+
+<p><strong>Why did my non-breaking space become a normal space?</strong> That is
+deliberate. Deleting it would glue "10&nbsp;USD" into "10USD"; replacing it with
+an ordinary space keeps the words apart.</p>
+
+<p><strong>Does it change the page I am reading?</strong> No. It reads your
+selection and hands the cleaned text to the popup, so you decide where it goes.
+Nothing on the page is rewritten.</p>
+
+<p><strong>Does it send my text anywhere?</strong> No. See the
+<a href="./">privacy policy</a>.</p>
+
+<h2>Related reading</h2>
+<p>Our fix guides explain how copy-paste damage happens and what can be done
+about it, including where an automated fix stops:
+<a href="../docs/">the fix guides index</a>.</p>
+
+<hr>
+<footer>
+  <p>VibeCode Labs · <a href="../">All policies</a> ·
+  <a href="./">Privacy policy</a></p>
+</footer>
+
+</main>
+</body>
+</html>

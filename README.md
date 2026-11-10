@@ -8,6 +8,7 @@ Published at **https://valen-leyes.github.io/vibecode-labs/**
 | Extension | Privacy policy | Support | Fix guides |
 |---|---|---|---|
 | Micro-Formatter | [`micro-formatter/`](micro-formatter/) | [`micro-formatter/support.html`](micro-formatter/support.html) | [`docs/`](docs/) |
+| Hidden Character Remover | [`hidden-characters/`](hidden-characters/) | [`hidden-characters/support.html`](hidden-characters/support.html) | [`docs/`](docs/) |
 
 ## What this repository is
 
